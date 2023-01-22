@@ -12,7 +12,7 @@ class EditController extends Controller
     {
         $authors = Author::all();
         $book = Book::find($id);
-        return view ('admin.authors.edit', compact('book', 'authors'));
+        return view ('admin.books.edit', compact('book', 'authors'));
     }
 }
 

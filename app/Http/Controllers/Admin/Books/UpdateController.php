@@ -13,6 +13,7 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
         $book->update($data);
-        return view('admin.books.show', compact('book'));
+        $author = $book->author()->first();
+        return view('admin.books.show', compact('book', 'author'));
     }
 }

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Public routes
-Route::get('/v1/books/list', [ApiController::class, 'index']);
+Route::get('/v1/books/', [ApiController::class, 'index']);
 Route::get('/v1/books/{id}', [ApiController::class, 'show']);
 Route::patch('/v1/books/{id}', [ApiController::class, 'update']);
 Route::delete('/v1/books/{id}', [ApiController::class, 'delete']);

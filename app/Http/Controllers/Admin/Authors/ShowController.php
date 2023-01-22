@@ -10,7 +10,7 @@ class ShowController extends Controller
 {
     public function __invoke(Author $author)
     {
-        $books = Book::all();
+        $books = Book::where('author_id', $author->id)->get();
         return view ('admin.authors.show', compact('author', 'books'));
     }
 }
