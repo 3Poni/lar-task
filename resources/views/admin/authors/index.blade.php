@@ -7,33 +7,36 @@
                 Добавить нового автора
             </a>
         </div>
-        <div class="d-flex-row container col-lg-8 mt-md-3">
-            <ul class="list-group ">
+        <div class="d-flex-row container col-lg-9 mt-md-3">
+            <ul class="list-group">
                 @foreach($authors as $author)
                     <div class="container">
                         <li class="list-group-item col-lg-8 mt-md-3">
                             Автор: <b>{{ $author->first_name . " " . $author->last_name}}</b><br>
-                        <span class="list-inline col-lg-8 mb-md-3">Кол-во книг: {{ count($author['books']) }}</span>
+                            <span class="list-inline col-lg-8 mb-md-3">Кол-во книг: {{ count($author['books']) }}</span>
                         </li>
-                        <li class="list-inline-item col-lg-8">
+                        <li class="list-inline-item col-lg-9">
                             <span class=" btn btn-outline-primary mb-md-3">
-                            <a class="text-decoration-none text-dark"
-                               href="{{ route('admin.author.show', $author->id) }}">
-                                Посмотреть
-                            </a>
+                                <a class="text-decoration-none text-dark"
+                                   href="{{ route('admin.author.show', $author->id) }}">
+                                    Посмотреть
+                                </a>
+                            </span>
+                            <span class="btn btn-outline-warning mb-md-3">
+                                <a class="text-decoration-none text-dark"
+                                   href="{{ route('admin.author.edit', $author->id) }}">
+                                    Редактировать
+                                </a>
+                            </span>
+                            <span class="btn">
+                                <form action="{{ route('admin.author.delete', $author->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="text-decoration-none text-dark" role="button">Удалить автора</i>
+                                    </button>
+                                </form>
                                 </span>
-                        <span class=" btn btn-outline-warning mb-md-3">
-                            <a class="text-decoration-none text-dark"
-                               href="{{ route('admin.author.edit', $author->id) }}">
-                                Редактировать
-                            </a>
-                        </span>
-                        <span class=" btn btn-outline-danger mb-md-3">
-                            <a class="text-decoration-none text-dark"
-                               href="{{ route('admin.author.delete', $author->id) }}">
-                                Удалить
-                            </a>
-                        </span>
                         </li>
                         <hr class="col-lg-8">
                     </div>

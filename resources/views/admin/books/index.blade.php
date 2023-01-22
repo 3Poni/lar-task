@@ -31,10 +31,14 @@
                                 Редактировать
                             </a>
                             </span>
-                            <span class="btn btn-outline-danger mb-md-3">
-                            <a class="text-decoration-none text-dark" href="{{ route('admin.book.delete', $book->id) }}">
-                                Удалить
-                            </a>
+                            <span class="btn">
+                                <form action="{{ route('admin.author.delete', $book->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="text-decoration-none text-dark" role="button">Удалить книгу</i>
+                                    </button>
+                                </form>
                             </span>
                         </li>
                         <hr class="col-lg-9">
